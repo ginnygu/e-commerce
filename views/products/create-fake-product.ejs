@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <% include ../partials/head %>
+ <body style="padding: 100px;">
+    <% include ../partials/nav %>
+
+        <% if(errors > 0){ %>
+       <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <%= errors %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+         </div>
+         <% } %>
+
+         <% if(success.length > 0) {%>
+         <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <%=success %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+         </div>
+         <% } %>
+
+
+     <ul class="list-group">
+         <% categories.forEach( category =>  {%>
+         <li class="list-group-item">
+           <a href="/api/admin/create-fake-product/<%= category.name%>/<%= category._id %>"><%= category.name %></a>
+        </li>
+        <% }) %>
+     </ul>
+
+ </body>
+</html>
